@@ -22,26 +22,17 @@ Nagios Plugin を作っていただきたい
 ---
 ### Nagios プラグインのルール
 * プラグインの Exit ステータス でサービスのステータスが決まる
-```
-0 : OK
-1 : WARNING
-2 : CRITICAL
-3 : UNKNOWN
-```
+0 : OK  
+1 : WARNING  
+2 : CRITICAL  
+3 : UNKNOWN  
 * プラグインの標準出力がステータス情報として処理される。
 * 出力に|（パイプ）が含まれている場合、パイプ以降はパフォーマンスデータとして処理される
 ---
-そのほかにも
-デバッグオプションの指定
-```
--v : Verbose 段階に
-```
-
-しきい値の指定
-```
--w : WARNING しきい値
--c : CRITICAL しきい値 
-```
+#### しきい値の指定  
+-w : WARNING しきい値  
+-c : CRITICAL しきい値   
+--- 
 |しきい値の指定|検知範囲|
 |---|---|
 |10|< 0 or > 10|
@@ -51,29 +42,29 @@ Nagios Plugin を作っていただきたい
 |@10:20|<= 10 or >= 20|
 
 --- 
-他にも制約がある詳細はこちら
-Nagios Plugins Development Guidelines
-http://nagios-plugins.org/doc/guidelines.html
+### デバッグオプションの指定方法など、他にも制約がある
+詳細はこちら  
+Nagios Plugins Development Guidelines  
+http://nagios-plugins.org/doc/guidelines.html  
 ---
-#### 早速実装してみよう shell 編
+### 早速実装してみよう shell 編
 ./shell/ 以下を参照
 ---
-### 実装したのもつかの間、こんな依頼が
+#### 実装したのもつかの間、こんな依頼が
 ```
 GCP の stack driver で収集しているメトリックを監視したい！！
 ```
 ---
-#### 早速実装してみよう python 編
+### 早速実装してみよう python 編
 ./python/ 以下を参照
 ---
-### 実装したのもつかの間、こんなことに…
+#### 実装したのもつかの間、こんなことに…
 ```
-pythonだと一度の処理に時間がかかりすぎるよ…！！
-早くしたい
-あと、pythonが入ってない環境でも実行できるようにならない？？
+pip入れるの面倒だな、ライブラリへの依存をなくしたい
+どうにかならない？？
 ```
 ---
-#### 早速実装してみよう go lang 編
+### 早速実装してみよう go lang 編
 ./go/ 以下を参照
 ---
 ### おまけ （グラフの作り方）
