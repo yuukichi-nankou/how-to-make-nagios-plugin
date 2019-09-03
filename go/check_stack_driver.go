@@ -62,7 +62,7 @@ func main() {
 			StartTime: &googlepb.Timestamp{
 				Seconds: unixNow - (critical * 60),
 			},
-	},
+		},
 	}
 
 	uptime := 0.0
