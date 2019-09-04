@@ -83,16 +83,16 @@ func main() {
 		_ = resp
 	}
 	int64uptime := int64(uptime)
-	struptime := strconv.FormatInt(int64uptime, 10)
-	if (int64uptime <=  0) {
-		output(2, "CRITICAL - Instance " + opts.Instance + " stopped for " + opts.Critical + " minutes. |uptime=" + struptime + ";" + opts.Warning + ";" + opts.Critical + ";")
+	struptime := strconv.FormatInt(int64(int64uptime) / 60, 10)
+	if (int64uptime <=  300) {
+		output(2, "CRITICAL - Instance " + opts.Instance + " stopped for " + opts.Critical + " minutes. |uptime=" + struptime + ";" + opts.Warning + ";5;")
 	}
 
 	if (int64uptime <=  warning * 60) {
-		output(1, "WARNING - Instance " + opts.Instance + " stopped for " + opts.Warning + " minutes. |uptime=" + struptime + ";" + opts.Warning + ";" + opts.Critical + ";")
+		output(1, "WARNING - Instance " + opts.Instance + " stopped for " + opts.Warning + " minutes. |uptime=" + struptime + ";" + opts.Warning + ";5;")
 	}
 
-	output(0, "OK - Instance " + opts.Instance + " is UP. |uptime=" + struptime + ";" + opts.Warning + ";" + opts.Critical + ";")
+	output(0, "OK - Instance " + opts.Instance + " is UP. |uptime=" + struptime + ";" + opts.Warning + ";5;")
 }
 
 func output(status int, message string) {
