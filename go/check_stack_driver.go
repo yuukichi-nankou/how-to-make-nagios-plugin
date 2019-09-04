@@ -36,6 +36,7 @@ func main() {
 	os.Setenv("GOOGLE_APPLICATION_CREDENTIALS", opts.Auth)
 
 	// GCPのSDKを使う準備
+	// https://godoc.org/cloud.google.com/go/monitoring/apiv3#NewMetricClient
 	ctx := context.Background()
 	c, err := monitoring.NewMetricClient(ctx)
 	if err != nil {
@@ -47,6 +48,7 @@ func main() {
 	filter += "AND metric.label.instance_name = \"" + opts.Instance + "\" "
 
 	// 取得期間の生成
+	// https://godoc.org/google.golang.org/genproto/googleapis/monitoring/v3#ListTimeSeriesRequest
 	var critical int64
 	critical, _ = strconv.ParseInt(opts.Critical, 10, 64)
 	var warning int64
