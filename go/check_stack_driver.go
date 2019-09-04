@@ -82,16 +82,17 @@ func main() {
 		}
 		_ = resp
 	}
-
-	if (int64(uptime) <=  0) {
-		output(2, "CRITICAL - Instance " + opts.Instance + " stopped for " + opts.Critical + " minutes.")
+	int64uptime := int64(uptime)
+	struptime := strconv.FormatInt(int64uptime, 10)
+	if (int64uptime <=  0) {
+		output(2, "CRITICAL - Instance " + opts.Instance + " stopped for " + opts.Critical + " minutes. |uptime=" + struptime + ";" + opts.Warning + ";" + opts.Critical + ";")
 	}
 
-	if (int64(uptime) <=  warning * 60) {
-		output(1, "WARNING - Instance " + opts.Instance + " stopped for " + opts.Critical + " minutes.")
+	if (int64uptime <=  warning * 60) {
+		output(1, "WARNING - Instance " + opts.Instance + " stopped for " + opts.Warning + " minutes. |uptime=" + struptime + ";" + opts.Warning + ";" + opts.Critical + ";")
 	}
 
-	output(0, "OK - Instance " + opts.Instance + " is UP.")
+	output(0, "OK - Instance " + opts.Instance + " is UP. |uptime=" + struptime + ";" + opts.Warning + ";" + opts.Critical + ";")
 }
 
 func output(status int, message string) {
