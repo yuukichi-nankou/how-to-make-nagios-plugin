@@ -1,6 +1,6 @@
 #/bin/bash
 ProcessName=$1
-Thresiold=$2
+Threshold=$2
 OwnPid=$$ 
 
 # このスクリプトを除く、ProcessNameにマッチするプロセスのプロセスIDを取得する
@@ -24,7 +24,7 @@ do
         ElapsedTime=0
     fi
     # ElapsedTime: 経過時間がしきい値より大きければ、超過している
-    if [ $ElapsedTime -gt $Thresiold ] ; then
+    if [ $ElapsedTime -gt $Threshold ] ; then
         echo 'CRITICAL - Process id ' $i ' over run !! life time ' $ElapsedTime
         exit 2
     fi
